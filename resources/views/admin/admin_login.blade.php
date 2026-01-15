@@ -39,7 +39,7 @@
 	<!-- endinject -->
 
   <!-- Layout styles -->  
-	<link rel="stylesheet" href="{{ asset('backend/assets/css/demo2/style.css') }}">
+	<link rel="stylesheet" href="{{ asset('backend/assets/css/demo1/style.css') }}">
   <!-- End layout styles -->
 
   <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.png') }}" />
@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-md-8 ps-md-0">
                   <div class="auth-form-wrapper px-4 py-5">
-                    <a href="#" class="noble-ui-logo logo-light d-block mb-2">Real<span>Estate</span></a>
+                    <a href="#" class="noble-ui-logo logo-dark d-block mb-2">Real<span>Estate</span></a>
                     <h5 class="text-muted fw-normal mb-4">Welcome back! Log in to your account.</h5>
                     <form class="forms-sample" method="POST" action="{{ route('login') }}">
                      @csrf
