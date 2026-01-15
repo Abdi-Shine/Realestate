@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-//admin Middleware
+//admin Group Middleware
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])
@@ -30,6 +30,19 @@ Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])
     //logout route
 Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])
     ->name('admin.logout');
+    //admin.phofile
+Route::get('/admin/profile', [AdminController::class, 'Adminprofile'])
+    ->name('admin.profile');
+
+Route::post('/admin/profile/store', [AdminController::class, 'AdminProfileStore'])
+    ->name('admin.profile.store');
+
+Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])
+    ->name('admin.change.password');
+
+Route::post('/admin/update/password', [AdminController::class, 'AdminUpdatePassword'])
+    ->name('admin.update.password');
+
 //admin/login 
 }); 
 

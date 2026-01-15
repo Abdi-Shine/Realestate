@@ -27,7 +27,8 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'login' => ['required', 'string'],
+            'login' => ['required_without:email', 'string'],
+            'email' => ['required_without:login', 'string'],
             'password' => ['required', 'string'],
         ];
     }
@@ -41,13 +42,12 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        $login = $this->input('login');
+        $login = $this->input('login') ?: $this->input('email');
 
         // Determine login type
         $login_type = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         
-        // Check if it's a phone number (digits only or specific format needed?)
-        // Assuming simple check if it contains numbers and maybe + char
+        // Check if it's a phone number
         if(is_numeric($login)){
              $login_type = 'phone';
         }
@@ -62,6 +62,7 @@ class LoginRequest extends FormRequest
 
             throw ValidationException::withMessages([
                 'login' => trans('auth.failed'),
+                'email' => trans('auth.failed'),
             ]);
         }
 
@@ -96,6 +97,7 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->input('login')).'|'.$this->ip());
+        $login = $this->input('login') ?: $this->input('email');
+        return Str::transliterate(Str::lower($login).'|'.$this->ip());
     }
 }
