@@ -28,19 +28,19 @@
             <div class="collapse" id="emails">
               <ul class="nav sub-menu">
                 <li class="nav-item">
-                  <a href="pages/email/inbox.html" class="nav-link">Inbox</a>
+                  <a href="#" class="nav-link">Inbox</a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/email/read.html" class="nav-link">Read</a>
+                  <a href="#" class="nav-link">Read</a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/email/compose.html" class="nav-link">Compose</a>
+                  <a href="#" class="nav-link">Compose</a>
                 </li>
               </ul>
             </div>
           </li>
           <li class="nav-item">
-            <a href="pages/apps/calendar.html" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="link-icon" data-feather="calendar"></i>
               <span class="link-title">Calendar</span>
             </a>
@@ -137,7 +137,7 @@
                   <a href="pages/general/invoice.html" class="nav-link">Invoice</a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/general/profile.html" class="nav-link">Profile</a>
+                  <a href="{{ route('admin.profile') }}" class="nav-link">Profile</a>
                 </li>
                 <li class="nav-item">
                   <a href="pages/general/pricing.html" class="nav-link">Pricing</a>
