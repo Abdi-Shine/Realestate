@@ -52,6 +52,15 @@ Route::middleware(['auth', 'role:agent'])->group(function () {
 Route::get('/agent/dashboard', [AgentController::class, 'AgentDashboard'])
     ->name('agent.dashboard');
 });
-    //admin/login
+//admin/login
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])
     ->name('admin.login');
+
+// Temporary route to clear cache on cPanel
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    return "Cache is cleared";
+});
